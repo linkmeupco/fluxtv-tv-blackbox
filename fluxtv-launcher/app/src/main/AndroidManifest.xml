@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- ── Android TV: declare Leanback support ─────────────────────────── -->
+    <!-- required="false" keeps it installable on phones/Fire TV too -->
+    <uses-feature android:name="android.software.leanback"  android:required="false" />
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+
+    <!-- Hardware that TV boxes may not have — mark all optional -->
+    <uses-feature android:name="android.hardware.screen.portrait"  android:required="false" />
+    <uses-feature android:name="android.hardware.camera"           android:required="false" />
+    <uses-feature android:name="android.hardware.microphone"       android:required="false" />
+    <uses-feature android:name="android.hardware.telephony"        android:required="false" />
+    <uses-feature android:name="android.hardware.bluetooth"        android:required="false" />
+    <uses-feature android:name="android.hardware.location"         android:required="false" />
+    <uses-feature android:name="android.hardware.nfc"              android:required="false" />
+
+    <application
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:banner="@drawable/tv_banner"
+        android:theme="@style/LaunchTheme"
+        android:allowBackup="false"
+        android:hardwareAccelerated="true"
+        android:supportsRtl="true"
+        tools:targetApi="34">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape"
+            android:configChanges="orientation|screenSize|keyboardHidden">
+
+            <!-- Standard phone / tablet home screen -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- ★ Android TV home screen ★ -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+    </application>
+
+</manifest>

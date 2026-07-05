@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        Transparent theme: the launcher activity has NO visible UI.
+        It opens the browser and immediately calls finish().
+        A transparent window means zero flash / black screen visible to user.
+    -->
+    <style name="LaunchTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">#141414</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:colorPrimary">#E50914</item>
+        <item name="android:colorPrimaryDark">#141414</item>
+    </style>
+</resources>
