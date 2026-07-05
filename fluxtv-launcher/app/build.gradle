@@ -2,13 +2,21 @@ plugins {
     id 'com.android.application'
 }
 
+configurations.configureEach {
+    resolutionStrategy {
+        force 'org.jetbrains.kotlin:kotlin-stdlib:1.8.22'
+        force 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.22'
+        force 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22'
+    }
+}
+
 android {
     namespace 'cc.fluxtv.tv'
     compileSdk 34
 
     defaultConfig {
         applicationId      "cc.fluxtv.tv"
-        minSdk             21        // Android 5 — covers every Android TV box ever made
+        minSdk             21
         targetSdk          34
         versionCode        1
         versionName        "1.0"
@@ -20,8 +28,8 @@ android {
             minifyEnabled    false
         }
         release {
-            minifyEnabled    false   // Tiny app, no need to shrink
-            signingConfig    signingConfigs.debug   // Use debug key for sideloading
+            minifyEnabled    false
+            signingConfig    signingConfigs.debug
         }
     }
 
@@ -30,7 +38,6 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    // Name the output APK clearly
     applicationVariants.configureEach { variant ->
         variant.outputs.configureEach {
             outputFileName = "FluxTV-AndroidTV-${variant.buildType.name}.apk"
